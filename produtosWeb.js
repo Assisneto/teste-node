@@ -1,17 +1,12 @@
-let http =  require('http');
-let porta = 3000;
-let ip = "localhost";
+let express =  require('express');
+let app = express();
 
-let server = http.createServer((req, res) => {
-    console.log("Recebendo request");
-    res.writeHead(    200, {'Content-Type': 'text/html'});
-    res.end(`<html>
-                <body>
-                    Request recebido!!!
-                </body>
-            </html>`);
+
+app.set('view engine','ejs')
+
+app.get('/produto', (req,res) => {
+    res.render('produto/lista');
 });
-server.listen(porta, ip);
-console.log("Server running at http://" + ip + ":" + porta + "/");
 
+app.listen(3000, () => console.log("Servidor rodando"));
 
