@@ -1,12 +1,17 @@
 let http =  require('http');
+let porta = 3000;
+let ip = "localhost";
 
 let server = http.createServer((req, res) => {
+    console.log("Recebendo request");
+    res.writeHead(    200, {'Content-Type': 'text/html'});
     res.end(`<html>
                 <body>
-                    <h1>Listando os produtos</h1>
+                    Request recebido!!!
                 </body>
             </html>`);
 });
-server.listen(3000);
+server.listen(porta, ip);
+console.log("Server running at http://" + ip + ":" + porta + "/");
 
-console.log("servidor rodando");
+
